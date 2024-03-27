@@ -73,6 +73,12 @@ private:
         return -1;
     }
 
+    //the gamepitch
+    string pitch =
+            " " + topLeft + " | " + topCenter + " | " + topRight + " \n""---|---|---\n"" " + middleLeft + " | " +
+            middleCenter + " | " + middleRight + " \n""---|---|---\n"" " + bottomLeft + " | " + bottomCenter + " | " +
+            bottomRight + " \n";
+
 public:
     //checks if the move was already done and is avaiable, and if it is avaiable it moves to the function, who changes the game field and after that it moves to the function who checks if there is a win
     void zug(int feld, string player) {
@@ -181,11 +187,9 @@ public:
         }
     }
 
-    //the gamepitch
-    string pitch =
-            " " + topLeft + " | " + topCenter + " | " + topRight + " \n""---|---|---\n"" " + middleLeft + " | " +
-            middleCenter + " | " + middleRight + " \n""---|---|---\n"" " + bottomLeft + " | " + bottomCenter + " | " +
-            bottomRight + " \n";
+    string pitch_output() {
+        return pitch;
+    }
 
     //a function to refresh the game pitch after every change
     void pitch_refresh() {
@@ -211,7 +215,7 @@ int main() {
         }
 
         game.pitch_refresh();
-        cout << game.pitch << endl;
+        cout << game.pitch_output() << endl;
         cout << "player " << player << " has turn:" << endl;
         cin >> input;
         game.zug(input, player);
