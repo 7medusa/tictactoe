@@ -70,7 +70,9 @@ private:
             cout << winner << endl;
             return 0;
         }
-        return -1;
+        else {
+            return -1;
+        }
     }
 
     //the gamepitch
