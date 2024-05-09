@@ -1,11 +1,3 @@
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include <time.h>
-#include <stdlib.h>
 #include <iostream>
 #include <string>
 
@@ -68,6 +60,15 @@ private:
             string winner = "the player who is winning is: ";
             winner += player;
             cout << winner << endl;
+            topLeft = "1";
+            topCenter = "2";
+            topRight = "3";
+            middleLeft = "4";
+            middleCenter = "5";
+            middleRight = "6";
+            bottomLeft = "7";
+            bottomCenter = "8";
+            bottomRight = "9";
             return 0;
         }
         else {
@@ -92,7 +93,7 @@ public:
                 else {
                     pitch_change(1, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -103,7 +104,7 @@ public:
                 else {
                     pitch_change(2, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -114,7 +115,7 @@ public:
                 else {
                     pitch_change(3, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -125,7 +126,7 @@ public:
                 else {
                     pitch_change(4, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -136,7 +137,7 @@ public:
                 else {
                     pitch_change(5, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -147,7 +148,7 @@ public:
                 else {
                     pitch_change(6, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -158,7 +159,7 @@ public:
                 else {
                     pitch_change(7, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -169,7 +170,7 @@ public:
                 else {
                     pitch_change(8, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -180,7 +181,7 @@ public:
                 else {
                     pitch_change(9, player);
                     if(win_check(player) == 0) {
-                        exit(0);
+                        break;
                     }
                 }
                 break;
@@ -202,7 +203,7 @@ public:
     }
 };
 
-int main() {
+void go() {
     int i = 1;
     int input;
     string player;
@@ -222,5 +223,11 @@ int main() {
         cin >> input;
         game.zug(input, player);
         i++;
+    }
+}
+
+int main() {
+    while(true) {
+        go();
     }
 }
