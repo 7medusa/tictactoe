@@ -1,9 +1,12 @@
 #include <iostream>
 #include <string>
+#include <limits>
 
 using namespace std;
 
 //tictactoe
+
+int i;
 
 class Pitch{
 private:
@@ -89,6 +92,7 @@ public:
             case 1:
                 if(topLeft != "1") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(1, player);
@@ -100,6 +104,7 @@ public:
             case 2:
                 if(topCenter != "2") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(2, player);
@@ -111,6 +116,7 @@ public:
             case 3:
                 if(topRight != "3") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(3, player);
@@ -122,6 +128,7 @@ public:
             case 4:
                 if(middleLeft != "4") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(4, player);
@@ -133,6 +140,7 @@ public:
             case 5:
                 if(middleCenter != "5") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(5, player);
@@ -144,6 +152,7 @@ public:
             case 6:
                 if(middleRight != "6") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(6, player);
@@ -155,6 +164,7 @@ public:
             case 7:
                 if(bottomLeft != "7") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(7, player);
@@ -166,6 +176,7 @@ public:
             case 8:
                 if(bottomCenter != "8") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(8, player);
@@ -177,6 +188,7 @@ public:
             case 9:
                 if(bottomRight != "9") {
                     cout << "error" << endl;
+                    i--;
                 }
                 else {
                     pitch_change(9, player);
@@ -204,8 +216,8 @@ public:
 };
 
 void go() {
-    int i = 1;
-    int input;
+    i = 1;
+    int input = 10;
     string player;
     Pitch game;
     while(true) {
@@ -219,10 +231,17 @@ void go() {
 
         game.pitch_refresh();
         cout << game.pitch_output() << endl;
-        cout << "player " << player << " has turn:" << endl;
+        cout << "player " << player << " has turn:\n>";
         cin >> input;
-        game.zug(input, player);
-        i++;
+        if(cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "wrong input" << endl;
+        }
+        else {
+            game.zug(input, player);
+            i++;
+        }
     }
 }
 
